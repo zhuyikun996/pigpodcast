@@ -1,0 +1,13 @@
+{
+  "cloud": true,
+  "pages": [
+    "pages/main/main",
+    "pages/test/test"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}

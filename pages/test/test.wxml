@@ -1,0 +1,15 @@
+<!--pages/test/test.wxml-->
+<scroll-view scroll-x style="width: 100%">
+  <radio-group bindchange="serviceValChange">
+    <view class="service_selection flex" style='display:flex;flex-direction:row;'>
+      <block wx:for="{{salaries}}" wx:key="index">
+        <view class=" item">
+          <label class="checkbox {{item.checked?'is_checked':''}}">
+            <radio value="{{item.value}}" checked="{{item.checked}}" hidden="false" />{{item.name}}
+          </label>
+        </view>
+      </block>
+    </view>
+  </radio-group>
+
+</scroll-view>

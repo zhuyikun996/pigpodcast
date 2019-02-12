@@ -1,0 +1,24 @@
+/* pages/test/test.wxss */
+.flex{
+  flex-direction: row;
+}
+.flex .item{
+  flex: 1
+}
+.service_selection {
+  padding: 15px 10px;
+  background: #fff;
+}
+ 
+.service_selection label {
+  background: #f0f1ec;
+  padding: 6px 7px;
+  font-size: 12px;
+  border-radius: 4px;
+}
+ 
+.service_selection .is_checked {
+  border: 1px solid #fe0002;
+  color: #fe0002;
+  background: #fff;
+}
