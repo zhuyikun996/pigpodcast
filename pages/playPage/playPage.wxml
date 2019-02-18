@@ -1,0 +1,21 @@
+<view class='picContainer'>
+  <image src='{{img_src}}' bindload="imageLoad"></image>
+</view>
+<view class='titles'>
+  <text class='episodeName'>{{episodeName}}</text>
+  <text class='podCastName'>{{podCastName}}</text>
+</view>
+<view class='controlview'>
+  <image class='btn_play' src='{{btn_src}}' bindtap='playRadio'></image>
+</view>
+<view class="process">
+  <text class='currentSecond'>{{currentTime}}</text>
+  <text class='fractionalLine'>/</text>
+  <text class='totalSecond'>{{totalTime}}</text>
+</view>
+<view class='bottomview'>
+  <view class='btnContainer'>
+    <button class='btnHome' hover-class='btnHomeClicked' bindtap='goBackHome'>主页</button>
+    <button class="btnShare" hover-class='btnShareClicked' open-type='share'>分享</button>
+  </view>
+</view>

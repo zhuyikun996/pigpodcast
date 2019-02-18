@@ -1,0 +1,15 @@
+<!--pages/podCastList/podCastList.wxml-->
+<view class="podCastList" wx:for="{{itemArray}}" wx:key="{{index}}" bindtap='podcastDetail' data-index="{{index}}">
+  <block>
+    <view class='episodeItem'>
+      <view class='img_item'  hidden='{{!historyHidden}}'>
+        <image class='img' src='{{img}}' mode="aspectFit"></image>
+      </view>
+      <view class='img_item_history' hidden='{{historyHidden}}'>
+        <image class='img_history' src='{{item.img}}' mode="aspectFit" > </image>
+      </view>
+      <text class='txt_item'>{{item.episodeName}} </text>
+    </view>
+    <view class='greyLine'></view>
+  </block>
+</view>

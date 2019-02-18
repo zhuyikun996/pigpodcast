@@ -2,7 +2,12 @@
   "cloud": true,
   "pages": [
     "pages/main/main",
+    "pages/playPage/playPage",
+    "pages/podCastList/podCastList",
     "pages/test/test"
+  ],
+  "requiredBackgroundModes": [
+    "audio"
   ],
   "window": {
     "backgroundTextStyle": "light",
