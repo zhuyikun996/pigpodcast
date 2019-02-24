@@ -19,3 +19,6 @@
     <!-- <view class='greyLine'></view> -->
   </block>
 </view>
+<view class="view_palying" hidden="{{palyingHiddenTag}}" bindtap="goToPlaying">
+  <image class="img_playing" src="{{img_playing_src}}"/>
+</view>

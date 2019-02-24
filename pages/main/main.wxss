@@ -95,3 +95,16 @@
     height: 1px;
     background-color: #ededed;
 }
+
+.view_palying {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    bottom: 30px;
+    right: 30px;
+}
+
+.img_playing {
+    width: 30px;
+    height: 30px;
+}

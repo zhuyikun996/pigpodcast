@@ -31,10 +31,13 @@ Page({
     onLoad: function(options) {
         var that = this;
         var id = options.id; //上一个页面传来的播客数据库中的id
-        console.log("onLoad-options.id: " + id)
         var dbName = options.dbName; //上一个页面传来的播客数据库名
-        console.log("onLoad-options.dbName: " + dbName)
         var podcastshortcut = options.podcastshortcut; //上一个页面传来的podcastshortcut
+        that.setData({ //赋值一下变量，用于在onTimeUpdate回调函数中设置正在播放播客的信息
+            id: id,
+            dbName: dbName,
+            podcastshortcut: podcastshortcut
+        })
         var historyTag = 0;
         var db = wx.cloud.database()
             //先去历史记录里加载数据
@@ -76,12 +79,12 @@ Page({
             var db_playlist = wx.cloud.database()
             db_playlist.collection(dbName).doc(id).get({
                 success(res) {
-                    console.log("该播客不存在历史记录数据库中res.data == " + JSON.stringify(res.data))
-                        // res.data 包含该记录的数据
+                    // console.log("该播客不存在历史记录数据库中res.data == " + JSON.stringify(res.data))
+                    // res.data 包含该记录的数据
                     var img = res.data.img
                     var podcastname = res.data.podcastname
                     var episodeName = res.data.episodeName //单集名称
-                    console.log("episodeName: " + episodeName)
+                        // console.log("episodeName: " + episodeName)
                     var src = res.data.src
                     var id = res.data._id
                     that.setData({
@@ -95,6 +98,7 @@ Page({
                 }
             })
         }
+
 
 
         //加载页面时，音频正在播放
@@ -145,7 +149,13 @@ Page({
                     currentTime: currentTime,
                     currentTimeDB: backgroundAudioManager.currentTime
                 })
-            }, 1000)
+
+            }, 500)
+            var id = that.data.id
+            var dbName = that.data.dbName
+            var podcastshortcut = that.data.podcastshortcut
+            var playingdata = { "id": id, "dbName": dbName, "podcastshortcut": podcastshortcut }
+            wx.setStorageSync("playing", playingdata) //设置正在播放的播客信息 id dbName podcastshortcut
         })
         backgroundAudioManager.onPause(() => {
             console.log("暂停播放")
@@ -171,6 +181,8 @@ Page({
                 firstPlayTag: false, //firstPlayTag调整为不是第一次播放
                 btn_src: "../../images/play.png" //切换播放按钮图片
             })
+            wx.setStorageSync("playing", 0) //设置正在播放的播客信息,暂停时，设为0
+            console.log("暂停播放:" + wx.getStorageSync("playing"))
         })
         backgroundAudioManager.onStop(() => {
             console.log("停止播放")
@@ -179,6 +191,7 @@ Page({
                 firstPlayTag: false, //firstPlayTag调整为不是第一次播放
                 btn_src: "../../images/play.png" //切换播放按钮图片
             })
+            wx.setStorageSync("playing", 0) //设置正在播放的播客信息,停止时，设为0
         })
         backgroundAudioManager.onWaiting(() => {
             console.log("缓冲中")
