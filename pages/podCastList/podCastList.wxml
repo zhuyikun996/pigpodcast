@@ -1,15 +1,24 @@
-<!--pages/podCastList/podCastList.wxml-->
+<!-- pages/podCastList/podCastList.wxml -->
+<!-- 头部图片 -->
+<view class="blurepicview" hidden='{{!historyHidden}}' style="background-image:url(https://dwz.cn/0rZne7Bp)">
+  <view>
+    <image class='img' src='{{img}}' mode="aspectFit"></image>
+  </view>
+  <view class="podcastintroview">
+    <text class="podcastintroName">{{podcastName}}</text>
+    <text class="podcastintroAuthor">主播：{{podcastAuthor}}</text>
+  </view>
+</view>
 <view class="podCastList" wx:for="{{itemArray}}" wx:key="{{index}}" bindtap='podcastDetail' data-index="{{index}}">
   <block>
     <view class='episodeItem'>
-      <view class='img_item'  hidden='{{!historyHidden}}'>
-        <image class='img' src='{{img}}' mode="aspectFit"></image>
-      </view>
-      <view class='img_item_history' hidden='{{historyHidden}}'>
-        <image class='img_history' src='{{item.img}}' mode="aspectFit" > </image>
-      </view>
-      <text class='txt_item'>{{item.episodeName}} </text>
+      <text class='txt_item'>{{item.episodeName}}</text>
     </view>
     <view class='greyLine'></view>
   </block>
+</view>
+<view class="clear" hidden="{{historyHidden}}">
+  <button class="btnClear" hover-class='btnClearClicked' bindtap='clearHistory'>
+    {{clearHistoryTips}}
+  </button>
 </view>

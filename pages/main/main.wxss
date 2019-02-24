@@ -1,47 +1,97 @@
 /* pages/main/main.wxss */
 
 .history {
-  margin-left: 25px;
-  height: 70px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+    margin-left: 25px;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .history image {
-  width: 45px;
-  height: 45px;
+    width: 45px;
+    height: 45px;
 }
 
 .history text {
-  margin-left: 20px;
+    margin-left: 20px;
 }
 
 .greyLineX {
-  width: 100%;
-  height: 3px;
-  background-color: #ededed;
+    width: 100%;
+    height: 3px;
+    background-color: #ededed;
+}
+
+.mainList {
+    margin-top: 10px;
 }
 
 .podCastItem {
-  margin-left: 20px;
-  height: 70px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+    margin-left: 20px;
+    height: 116px;
+    display: flex;
+    flex-direction: row;
 }
 
-.podCastItem image {
-  width: 50px;
-  height: 50px;
+.podcastImg {
+    width: 110px;
+    height: 110px;
 }
 
-.podCastItem text {
-  margin-left: 20px;
+
+/* 播客图片 */
+
+.img_item {
+    width: 110px;
+    height: 110px;
+    border-radius: 5%;
+}
+
+.podcastTitleAndIntro {
+    display: flex;
+    flex-direction: column;
+    margin-top: 6px;
+    margin-left: 10px;
+}
+
+
+/* 播客名 */
+
+.txt_item_name {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+
+/* 播客主播 */
+
+.txt_item_author {
+    margin-top: 12px;
+    margin-left: 20px;
+    font-size: 12px;
+    color: #949393;
+}
+
+
+/* 播客简介 */
+
+.txt_item_intro {
+    margin-top: 12px;
+    margin-left: 20px;
+    margin-right: 5px;
+    font-size: 12px;
+    color: #949393;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .greyLine {
-  width: 100%;
-  height: 1px;
-  background-color: #ededed;
+    width: 100%;
+    height: 1px;
+    background-color: #ededed;
 }

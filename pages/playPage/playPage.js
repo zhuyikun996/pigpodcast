@@ -19,7 +19,10 @@ Page({
         currentTimeDB: 0,
         currentTime: "00:00:00",
         totalTime: "00:02:00",
-        currentHistoryId: 0 //当前history的索引id
+        currentHistoryId: 0, //当前history的索引id
+        btn_left: "../../images/left.png",
+        btn_right: "../../images/right.png"
+
     },
 
     /**
@@ -41,18 +44,20 @@ Page({
             success(res) {
                 if (res.data == "") { //该播客不存在历史记录数据库中,再去相应的播客数据库里捞
                     historyTag = 0
-
                 } else { //该播客存在历史记录数据库中,捞出来相应的数据
-                    console.log("2222222222")
-                        // console.log("res.data == " + JSON.stringify(res.data))
-                        // res.data 包含该记录的数据
+                    // console.log("res.data == " + JSON.stringify(res.data))
+                    // res.data 包含该记录的数据
                     var img = res.data[0].img
                     var podcastname = res.data[0].podCastName //注意，这个字段在history库里是podCastName
                     var episodeName = res.data[0].episodeName //单集名称
                     var src = res.data[0].src
                     var id = res.data[0].podCastId //注意，这个字段在history库里应该取podCastId
-                    var currenttime = res.data[0].currenttime //在history数据库里有这个字段
-                    console.log("currenttime-onload:  " + currenttime)
+                    if (res.data[0].currenttime != "") {
+                        var currenttime = res.data[0].currenttime //在history数据库里有这个字段
+                    } else {
+                        var currenttime = "00:00:00"
+                    }
+                    // console.log("currenttime-onload:  " + currenttime)
                     that.setData({
                         podCastName: podcastname,
                         episodeName: episodeName,
@@ -149,8 +154,8 @@ Page({
                 //上传当前进度
             var curTime = backgroundAudioManager.currentTime
                 //由于在点击播放按钮的时候已经把这条播客放入了history库，现在只需要更新time和currenttime
-            console.log("onPause-curTime: " + curTime)
-            console.log("onPause-currentHistoryId: " + that.data.currentHistoryId)
+                // console.log("onPause-curTime: " + curTime)
+                // console.log("onPause-currentHistoryId: " + that.data.currentHistoryId)
             var dbUpdateTime = wx.cloud.database()
                 //更新的id为history的索引值id
             dbUpdateTime.collection("podCastArrayDB_history").doc(that.data.currentHistoryId).update({
@@ -236,7 +241,7 @@ Page({
                 if (res.data == "") { //该播客不存在历史记录数据库中,执行add操作
                     console.log("storeHistory：该播客不存在历史记录数据库中")
                     var db = wx.cloud.database()
-                    console.log("that.data.currenttime-store:" + that.data.currentTimeDB)
+                        // console.log("that.data.currenttime-store:" + that.data.currentTimeDB)
                     db.collection('podCastArrayDB_history').add({
                         data: {
                             src: that.data.src, //音频源文件地址
@@ -250,7 +255,7 @@ Page({
                         },
                         success(res) {
                             // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-                            console.log("播放存入历史成功id:" + res._id)
+                            // console.log("播放存入历史成功id:" + res._id)
                             that.setData({
                                 currentHistoryId: res._id //当前history的索引id
                             })
@@ -275,6 +280,23 @@ Page({
                 }
             }
         })
+    },
+    // 倒退15秒
+    playBack15: function() {
+        var that = this
+        if (backgroundAudioManager.currentTime > 15) {
+            backgroundAudioManager.seek(backgroundAudioManager.currentTime - 15)
+        } else {
+            wx.showToast({
+                title: '播放时长超过15秒才可以回退哦',
+                icon: 'none',
+                duration: 2000
+            })
+        }
+    },
+    //前进30秒
+    playForward30: function() {
+        backgroundAudioManager.seek(backgroundAudioManager.currentTime + 30)
     },
     /**
      * 图片加载回调函数

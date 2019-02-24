@@ -1,0 +1,16 @@
+<view class="podCastList" wx:for="{{itemArray}}" wx:key="{{index}}" bindtap='podcastDetail' data-index="{{index}}">
+  <block>
+    <view class='episodeItem'>
+      <view class='img_item_history'>
+        <image class='img_history' src='{{item.img}}' mode="aspectFit"></image>
+      </view> 
+      <text class='txt_item'>{{item.episodeName}}</text>
+    </view>
+    <view class='greyLine'></view>
+  </block>
+</view>
+<view class="clear">
+  <button class="btnClear" hover-class='btnClearClicked' bindtap='clearHistory'>
+    {{clearHistoryTips}}
+  </button>
+</view>

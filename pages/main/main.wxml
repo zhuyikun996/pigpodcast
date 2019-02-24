@@ -1,18 +1,21 @@
-<!--pages/main/main.wxml-->
+<!-- pages/main/main.wxml -->
 <view class='history' bindtap='historyPage'>
   <image class='imgHistory' src='../../images/history.png'></image>
   <text class='txtHistory'>播放历史</text>
 </view>
 <view class='greyLineX'></view>
-
 <view class="mainList" wx:for="{{listArray}}" wx:key="{{index}}" bindtap='singlePodcastArray' data-index="{{index}}">
   <block>
     <view class='podCastItem'>
-      <!-- <image-loader class='img_item' default-image='{{imgDefault}}' mode='widthFix' original-image='{{item.img}}' width="50px" height="50px" /> -->
-
-      <image class='img_item' src='{{item.img}}'></image>
-      <text class='txt_item'>{{item.podcastname}} </text>
+      <view class="podcastImg">
+        <image class='img_item' src='{{item.img}}'></image>
+      </view>
+      <view class="podcastTitleAndIntro">
+        <text class='txt_item_name'>{{item.podcastname}}</text>
+        <text class='txt_item_author'>主播：{{item.author}}</text>
+        <text class='txt_item_intro'>{{item.podcastintro}}</text>
+      </view>
     </view>
-    <view class='greyLine'></view>
+    <!-- <view class='greyLine'></view> -->
   </block>
 </view>

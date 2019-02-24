@@ -5,14 +5,18 @@
   <text class='episodeName'>{{episodeName}}</text>
   <text class='podCastName'>{{podCastName}}</text>
 </view>
-<view class='controlview'>
-  <image class='btn_play' src='{{btn_src}}' bindtap='playRadio'></image>
-</view>
 <view class="process">
   <text class='currentSecond'>{{currentTime}}</text>
   <text class='fractionalLine'>/</text>
   <text class='totalSecond'>{{totalTime}}</text>
 </view>
+
+<view class='controlview'>
+  <image class='btn_left' src='{{btn_left}}' bindtap='playBack15'></image>
+  <image class='btn_play' src='{{btn_src}}' bindtap='playRadio'></image>
+  <image class='btn_right' src='{{btn_right}}' bindtap='playForward30'></image>
+</view>
+
 <view class='bottomview'>
   <view class='btnContainer'>
     <button class='btnHome' hover-class='btnHomeClicked' bindtap='goBackHome'>主页</button>
