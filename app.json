@@ -4,7 +4,6 @@
         "pages/main/main",
         "pages/history/history",
         "pages/playPage/playPage",
-        "pages/test/test",
         "pages/podCastList/podCastList"
     ],
     "requiredBackgroundModes": [

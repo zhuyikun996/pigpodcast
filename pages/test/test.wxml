@@ -1,3 +1,0 @@
-<view class="section tc">
-  <video src="{{src}}" controls></video>
-</view>

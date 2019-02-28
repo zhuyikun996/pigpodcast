@@ -14,6 +14,7 @@ Page({
         clearHistoryTips: "清除历史记录",
         podcastName: "", //播客名字
         podcastAuthor: "", //播客作者
+        index: 0, //默认拉取第1页
     },
 
     /**
@@ -38,7 +39,7 @@ Page({
                 podcastName: podcastname,
             })
             // 拉取播客数据库数据 dbName = podCastArrayDB_podcastshortcut (eg:podCastArrayDB_dywx)
-        that.loadPodCast(dbName);
+        that.loadPodCast(dbName, that.data.index); //第1次拉取db中的数据
     },
     //跳转到播放页面
     podcastDetail: function(e) {
@@ -56,14 +57,27 @@ Page({
     /**|
      * 拉取播客数据库数据
      */
-    loadPodCast: function(dbName) {
+    loadPodCast: function(dbName, i) {
         var that = this;
         const db = wx.cloud.database()
-        db.collection(dbName).get({
+        var resArray = that.data.itemArray
+        db.collection(dbName).skip(20 * i).get({
             success(res) {
-                that.setData({
-                    itemArray: res.data,
-                })
+                if (res.data.length > 0) {
+                    for (let j = 0; j < res.data.length; j++) {
+                        resArray.push(res.data[j])
+                    }
+                    that.setData({
+                        itemArray: resArray,
+                    })
+                } else {
+                    wx.showToast({
+                        title: '客官，实在是没有余粮了，就这么多了',
+                        icon: 'none',
+                        duration: 2000
+                    })
+                }
+
             }
         })
     },
@@ -112,6 +126,14 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function() {
+        console.log("页面上拉触底事件的处理函数")
+        var that = this
+        var index = that.data.index
+        that.setData({
+            index: index + 1
+        })
+        var dbName = that.data.dbName
+        that.loadPodCast(dbName, that.data.index); //第1次拉取db中的数据
 
     },
 

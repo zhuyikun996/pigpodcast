@@ -108,3 +108,31 @@
     width: 30px;
     height: 30px;
 }
+
+.recommended {
+    width: 100%;
+    height: 80px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.txt_recommended {
+    font-size: 10px;
+    color: #949393;
+}
+
+.btn_recommended::after {
+    border: none;
+}
+
+.btn_recommended {
+    width: 250px;
+    height: 30px;
+    margin-top: 10px;
+    color: white;
+    background-color: #FEE419;
+    font-size: 14px;
+}

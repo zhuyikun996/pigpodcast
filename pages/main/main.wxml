@@ -12,7 +12,7 @@
       </view>
       <view class="podcastTitleAndIntro">
         <text class='txt_item_name'>{{item.podcastname}}</text>
-        <text class='txt_item_author'>主播：{{item.author}}</text>
+        <text class='txt_item_author'>{{item.author}}</text>
         <text class='txt_item_intro'>{{item.podcastintro}}</text>
       </view>
     </view>
@@ -20,5 +20,9 @@
   </block>
 </view>
 <view class="view_palying" hidden="{{palyingHiddenTag}}" bindtap="goToPlaying">
-  <image class="img_playing" src="{{img_playing_src}}"/>
+  <image class="img_playing" src="{{img_playing_src}}" />
+</view>
+<view class="recommended">
+  <text class="txt_recommended">没有找到你想听的播客？点击下方按钮，告诉我你想听的播客名字</text>
+  <button class="btn_recommended"  open-type="contact">有话要说</button>
 </view>
