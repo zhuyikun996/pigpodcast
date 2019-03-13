@@ -61,7 +61,7 @@ Page({
         var that = this;
         const db = wx.cloud.database()
         var resArray = that.data.itemArray
-        db.collection(dbName).skip(20 * i).get({
+        db.collection(dbName).orderBy('index', 'desc').skip(20 * i).get({
             success(res) {
                 if (res.data.length > 0) {
                     for (let j = 0; j < res.data.length; j++) {
@@ -72,7 +72,7 @@ Page({
                     })
                 } else {
                     wx.showToast({
-                        title: '客官，实在是没有余粮了，就这么多了',
+                        title: '现在就这么多啦，小猪正在拼命增加内容',
                         icon: 'none',
                         duration: 2000
                     })
@@ -126,7 +126,7 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function() {
-        console.log("页面上拉触底事件的处理函数")
+        // console.log("页面上拉触底事件的处理函数")
         var that = this
         var index = that.data.index
         that.setData({
