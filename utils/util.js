@@ -8,6 +8,12 @@ const formatTime = date => {
 
     return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
+const formatTimeForFriday = date => {
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    return [year, month, day].map(formatNumber).join('-')
+}
 const myFormatTime = date => {
     const year = date.getFullYear()
     const month = date.getMonth() + 1
@@ -43,13 +49,23 @@ var myFormatSecondToHHMMSS = seconds => {
 }
 
 const formatNumber = n => {
-    n = n.toString()
-    return n[1] ? n : '0' + n
-}
+        n = n.toString()
+        return n[1] ? n : '0' + n
+    }
+    //todate默认参数是当前日期，可以传入对应时间 todate格式为2018-10-05
 
+function getWeeks(dates) {
+    let show_day = new Array('周日', '周一', '周二', '周三', '周四', '周五', '周六');
+    let date = new Date(dates);
+    let day = date.getDay();
+    var week = show_day[day];
+    return week;
+}
 
 module.exports = {
     formatTime: formatTime,
     myFormatTime: myFormatTime,
-    myFormatSecondToHHMMSS: myFormatSecondToHHMMSS
+    myFormatSecondToHHMMSS: myFormatSecondToHHMMSS,
+    getWeeks: getWeeks,
+    formatTimeForFriday: formatTimeForFriday
 }

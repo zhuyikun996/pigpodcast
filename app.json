@@ -1,6 +1,7 @@
 {
     "cloud": true,
     "pages": [
+        "pages/friday/friday",
         "pages/main/main",
         "pages/history/history",
         "pages/playPage/playPage",
@@ -15,4 +16,4 @@
         "navigationBarTitleText": "WeChat",
         "navigationBarTextStyle": "black"
     }
-} 
+}

@@ -1,0 +1,12 @@
+<!-- pages/friday/friday.wxml -->
+<view class="container">
+    <view class="question_and_answer">
+        <text class="txt_question">今天是周五吗？</text>
+        <text class="txt_answer">{{yesOrNo}}</text>
+        <text class="txt_do">{{prefer}}</text>
+    </view>
+    <view class="tips_view">
+        <text class="txt_tips">{{tips0}}{{yesOrNo}}{{tips1}}</text>
+        <button class="btnShare" open-type='share'>share</button>
+    </view>
+</view>
