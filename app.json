@@ -1,19 +1,21 @@
 {
-    "cloud": true,
-    "pages": [
-        "pages/friday/friday",
-        "pages/main/main",
-        "pages/history/history",
-        "pages/playPage/playPage",
-        "pages/podCastList/podCastList"
-    ],
-    "requiredBackgroundModes": [
-        "audio"
-    ],
-    "window": {
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "WeChat",
-        "navigationBarTextStyle": "black"
-    }
+  "cloud": true,
+  "pages": [
+    "pages/main/main",
+    "pages/history/history",
+    "pages/playPage/playPage",
+    "pages/podCastList/podCastList",
+    "pages/friday/friday",
+    "pages/test/test"
+  ],
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
 }
